@@ -1,0 +1,11 @@
+## file extensions
+
+*.pyc
+
+## files not included
+
+config.py
+
+##database files not included
+
+db.sqlite3
