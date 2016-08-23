@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class PostFeed(models.Model):
@@ -22,7 +22,9 @@ class PostFeed(models.Model):
 		is_published = models.BooleanField(default= False)
 		created_on = models.DateTimeField(auto_now_add=True, auto_now=False, editable=False)
 		updated_on = models.DateTimeField(auto_now_add=False, auto_now=True)
-		sentiment_score = models.IntegerField()
+		sentiment_score = models.FloatField()
+		submitter = models.ForeignKey(User)
+		fail = models.BooleanField(default= False)
 
 		class Meta:
 				ordering = ['-created_on']

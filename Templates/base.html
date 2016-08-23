@@ -15,21 +15,45 @@
         <!--<link rel="stylesheet" href="css/main.css"> -->
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-
+<style type="text/css">
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;    
+}</style>
+        
+    <div class="content">
+    
+        <div class="row">
+            <table>
+            <tr>
+            <th>
+                Comment
+            </th>
+            <th>
+            Score </th>
+            <th> submitter </th>
+            </tr>
+            {% for post in posts %}            
+            <tr>
+                {% if post.fail is False %}
+                <td> {{post.newsfeed}}</td>
+                <td>{{post.sentiment_score}}</td>
+                <td> {{post.submitter}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+    
+    </div>
         <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
 
-        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-        <script>
-            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-        </script>
-        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+        
+       
     </body>
 </html>
