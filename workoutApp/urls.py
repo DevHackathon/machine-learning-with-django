@@ -13,9 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-
+from Gallery.views import PostFeedListView as url_feeds
+from Gallery.views import FeedFormView as url_feeds_form
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', url_feeds.as_view(), name='postfeeds'),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^watson/', url_feeds_form.as_view(), name='postformfeeds'),
 ]
